@@ -4,24 +4,23 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-const blogRoute = require("./Routes/blogRoutes");
-const quoteRoute = require("./Routes/quoteRoutes");
-const commentRoute = require("./Routes/commentRoutes");
+
+// we can define multiple routes here
 const userRoutes = require("./Routes/userRoutes");
 
 // express app
 const app = express();
 app.use(cors());
 
-// middleware function
+// this function is used for receiving json data from the client
 app.use(express.json());
 
+// this function is used for middleware
 app.use((req, res, next) => {
   next();
 });
 
-// routes
-app.use("/api/blog", blogRoute);
+// access <routes></routes> based different route url
 app.use("/api/user", userRoutes);
 
 // connect to db
